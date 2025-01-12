@@ -1,72 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<c:url value="/resource/bootstrap/css/bootstrap.min.css"/>">
-<script src="<c:url value="/resource/js/jquery.js"/>"></script>
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.min.js"/>"></script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/overall.css"/>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Image Carousel</title>
+
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="<c:url value='/resource/bootstrap/css/bootstrap.min.css' />">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<c:url value='/resource/css/overall.css' />">
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="<c:url value='/resource/js/jquery.js' />"></script>
+    <script src="<c:url value='/resource/bootstrap/js/bootstrap.bundle.min.js' />"></script>
 </head>
+
 <body>
-	<!-- Slider -->
-	<div class="jumbotron">
-		<div class="container">
-			<br>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-					<li data-target="#myCarousel" data-slide-to="3"></li>
-					<li data-target="#myCarousel" data-slide-to="4"></li>
-				</ol>
+    <!-- Slider -->
+    <div class="jumbotron">
+        <div class="container">
+            <br>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
+                    <li data-bs-target="#carouselExample" data-bs-slide-to="4"></li>
+                </ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="<c:url value="/resource/images/oppo.jpg"/>" alt="Image1"
-							width="460" height="345">
-					</div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="<c:url value='/resource/images/oppo.jpg' />" alt="Image 1" class="d-block w-100" />
+                    </div>
 
-					<div class="item">
-						<img src="<c:url value="/resource/images/oppo1.jpg"/>"
-							alt="Image2" width="460" height="345">
-					</div>
+                    <div class="carousel-item">
+                        <img src="<c:url value='/resource/images/oppo1.jpg' />" alt="Image 2" class="d-block w-100" />
+                    </div>
 
-					<div class="item">
-						<img src="<c:url value="/resource/images/oppo2.jpg"/>"
-							alt="Image3" width="460" height="345">
-					</div>
+                    <div class="carousel-item">
+                        <img src="<c:url value='/resource/images/oppo2.jpg' />" alt="Image 3" class="d-block w-100" />
+                    </div>
 
-					<div class="item">
-						<img src="<c:url value="/resource/images/oppo3.jpg"/>"
-							alt="Image4" width="460" height="345">
-					</div>
+                    <div class="carousel-item">
+                        <img src="<c:url value='/resource/images/oppo3.jpg' />" alt="Image 4" class="d-block w-100" />
+                    </div>
 
-					<div class="item">
-						<img src="<c:url value="/resource/images/oppo4.png"/>"
-							alt="Image5" width="460" height="345">
-					</div>
-				</div>
+                    <div class="carousel-item">
+                        <img src="<c:url value='/resource/images/oppo4.png' />" alt="Image 5" class="d-block w-100" />
+                    </div>
+                </div>
 
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel" role="button"
-					data-slide="next"> <span
-					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#myCarousel" role="button"
-					data-slide="prev"> <span
-					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</div>
+                <!-- Left and right controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

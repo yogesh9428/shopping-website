@@ -7,7 +7,6 @@
 			<div class="jumbotron">
 				<div class="container">
 					<h1>Thank you for your business!</h1>
-
 					<p>Your order will be shipped in two business days!</p>
 				</div>
 			</div>
@@ -20,5 +19,7 @@
 		</section>
 	</div>
 </div>
-  <%@ include file="productGrid.jsp"%>
+
+<%@ include file="productGrid.jsp"%>
 <%@ include file="/WEB-INF/page/footer.jsp"%>
+

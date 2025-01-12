@@ -2,8 +2,9 @@ package com.Shopping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Shopping.model.Cart;
 import com.Shopping.model.Customer;
@@ -14,32 +15,36 @@ import com.Shopping.service.CustomerOrderService;
 @Controller
 public class OrderController {
 
-	@Autowired
-	private CartService cartService;
+    @Autowired
+    private CartService cartService;
 
-	@Autowired
-	private CustomerOrderService customerOrderService;
+    @Autowired
+    private CustomerOrderService customerOrderService;
 
-	@RequestMapping("/order/{cartId}")
-	public String createOrder(@PathVariable("cartId") String cartId) {
+    @GetMapping("/order/{cartId}")
+    public String createOrder(@PathVariable("cartId") String cartId, Model model) {
 
-		CustomerOrder customerOrder = new CustomerOrder();
+        Cart cart = cartService.getCartByCartId(cartId);
+        if (cart == null) {
+            model.addAttribute("error", "Cart not found for ID: " + cartId);
+            return "error";  // Return an error view if cart not found
+        }
 
-		Cart cart = cartService.getCartByCartId(cartId);
-		// Update CartId for customerOrder - set CartId
-		customerOrder.setCart(cart);
+        CustomerOrder customerOrder = new CustomerOrder();
+        customerOrder.setCart(cart);
 
-		Customer customer = cart.getCustomer();
+        Customer customer = cart.getCustomer();
+        if (customer == null) {
+            model.addAttribute("error", "Customer not found for the given cart.");
+            return "error";  // Return an error view if customer not found
+        }
 
-		customerOrder.setCustomer(customer);
-		// Set customerid
-		// Set ShippingAddressId
-		customerOrder.setShippingAddress(customer.getShippingAddress());
+        customerOrder.setCustomer(customer);
+        customerOrder.setShippingAddress(customer.getShippingAddress());
+        customerOrder.setBillingAddress(customer.getBillingAddress());
 
-		customerOrder.setBillingAddress(customer.getBillingAddress());
+        customerOrderService.addCustomerOrder(customerOrder);
 
-		customerOrderService.addCustomerOrder(customerOrder);
-
-		return "redirect:/checkout?cartId=" + cartId;
-	}
+        return "redirect:/checkout?cartId=" + cartId;
+    }
 }

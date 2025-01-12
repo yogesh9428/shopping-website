@@ -9,11 +9,18 @@ public class FileUploadController {
 
     @PostMapping("/file")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        if (!file.isEmpty()) {
-            String fileName = file.getOriginalFilename();
-            // Save the file or process it as needed
-            return "Uploaded: " + fileName;
+        if (file.isEmpty()) {
+            return "Failed to upload file because it was empty.";
         }
-        return "Failed to upload file because it was empty.";
+        
+        String fileName = file.getOriginalFilename();
+        
+        // Implement the logic to save or process the file
+        try {
+           
+            return "Uploaded successfully: " + fileName;
+        } catch (Exception e) {
+            return "Failed to upload file: " + e.getMessage();
+        }
     }
 }
